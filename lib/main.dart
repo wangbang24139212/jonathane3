@@ -32,7 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //widget.title
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   num position = 1;
@@ -52,21 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    /*return Scaffold(body: Builder(builder: (BuildContext context) {
-      return WebView(
-        key: _key,
-        initialUrl: widget.url,
-        javascriptMode: JavascriptMode.unrestricted,
-        onWebViewCreated: (WebViewController webViewController) {
-          _controller.complete(webViewController);
-        },
-        onPageFinished: (finish) {
-          setState(() {
-            isLoading = false;
-          });
-        },
-      );
-    }));*/
     return Scaffold(
         body: IndexedStack(index: position, children: <Widget>[
       WebView(
