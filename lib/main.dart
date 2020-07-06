@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child: MyHomePage(
-            url : 'http://jonathane3.sg-host.com/crm/',
+            url: 'http://jonathane3.sg-host.com/crm/',
           ),
         ),
       ),
@@ -33,20 +33,56 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   //widget.title
-  final Completer<WebViewController> _controller = Completer<WebViewController>();
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
+  num position = 1;
+  final key = UniqueKey();
+
+  doneLoading(String A) {
+    setState(() {
+      position = 0;
+    });
+  }
+
+  startLoading(String A) {
+    setState(() {
+      position = 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    /*return Scaffold(body: Builder(builder: (BuildContext context) {
+      return WebView(
+        key: _key,
+        initialUrl: widget.url,
+        javascriptMode: JavascriptMode.unrestricted,
+        onWebViewCreated: (WebViewController webViewController) {
+          _controller.complete(webViewController);
+        },
+        onPageFinished: (finish) {
+          setState(() {
+            isLoading = false;
+          });
+        },
+      );
+    }));*/
     return Scaffold(
-        body: Builder(builder: (BuildContext context) {
-          return WebView(
-              initialUrl: widget.url,
-              javascriptMode: JavascriptMode.unrestricted,
-              onWebViewCreated: (WebViewController webViewController) {
-                _controller.complete(webViewController);
-              },
-          );
-        })
-    );
+        body: IndexedStack(index: position, children: <Widget>[
+      WebView(
+        initialUrl: widget.url,
+        javascriptMode: JavascriptMode.unrestricted,
+        key: key,
+        onWebViewCreated: (WebViewController webViewController) {
+          _controller.complete(webViewController);
+        },
+        onPageFinished: doneLoading,
+        onPageStarted: startLoading,
+      ),
+      Container(
+        color: Colors.white,
+        child: Center(child: CircularProgressIndicator()),
+      ),
+    ]));
   }
 }
