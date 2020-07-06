@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>jonathane3</string>
+	<string>markndo</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -44,9 +44,9 @@
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
-        <dict>
-            <key>NSAllowsArbitraryLoadsInWebContent</key>
-            <true/>
-        </dict>
+	<dict>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

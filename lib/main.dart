@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
         body: SafeArea(
           child: MyHomePage(
             url: 'http://jonathane3.sg-host.com/crm/',
+            //url: 'https://www.google.com',
           ),
         ),
       ),
